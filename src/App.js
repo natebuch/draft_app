@@ -78,10 +78,12 @@ class App extends Component {
     return players.map(({player_name, overall_rank, positional_rank, bye_week}, index) => {
       return (
         <div key={ overall_rank }>
-          <li className="list-group-item list-group-item-danger">
+          <li className="list-group-item list-group-item-danger ">
             { overall_rank }. { player_name } - Pos. { positional_rank } - Bye: { bye_week }
-            <button className="btn btn-warning btn-sm d-flex justify-content-right" onClick={ () => this.unselectPlayer(index) }>Remove</button>    
-          </li>
+            <div className="btn-group justify-content-right" role="group" aria-label="Basic example">
+              <button className="btn btn-warning btn-sm d-flex justify-content-right" onClick={ () => this.unselectPlayer(index) }>Remove</button>    
+            </div>
+        </li>
        </div>
       )
     })  
@@ -119,9 +121,9 @@ class App extends Component {
       <div>
         <div>
           <nav className="navbar" style={{backgroundColor: '#900C3F'}}>
-          <div>
-            <img id="fork" src="https://i.redd.it/odmx4dqcaory.jpg" width="60" height="60" alt=""/>
-            <span style={{color: "#FFC300"}} className='justify-content-left'>DRAFT 'EM</span>
+            <div>
+              <img id="fork" src="https://i.redd.it/odmx4dqcaory.jpg" width="60" height="60" alt=""/>
+              <span style={{color: "#FFC300"}} className='justify-content-left'>DRAFT 'EM</span>
             </div>
             <span id="logo" className="navbar-brand mb-0 h1" style={{color: "#FFC300"}}>S.D.I.F.F.L.</span>
           </nav> 
