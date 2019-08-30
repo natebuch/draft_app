@@ -119,25 +119,28 @@ class App extends Component {
       <div>
         <div>
           <nav className="navbar" style={{backgroundColor: '#900C3F'}}>
+          <div>
             <img id="fork" src="https://i.redd.it/odmx4dqcaory.jpg" width="60" height="60" alt=""/>
+            <span style={{color: "#FFC300"}} className='justify-content-left'>DRAFT 'EM</span>
+            </div>
             <span id="logo" className="navbar-brand mb-0 h1" style={{color: "#FFC300"}}>S.D.I.F.F.L.</span>
           </nav> 
         </div> 
         <div className="d-flex justify-content-around">
           <section>
-            <h1 style={{color: "#900C3F"}}>Avail. Players</h1>
+            <h3  style={{color: "#900C3F", borderBottom: "2px solid #900C3F"}}>Avail. Players</h3>
             <ul className="list-group">
               { this.listAvailablePlayers() }
             </ul>
           </section>
           <section>
-            <h1 style={{color: "#900C3F"}}>Picked Players</h1>
+            <h3 style={{color: "#900C3F", borderBottom: "2px solid #900C3F"}}>Drafted Players</h3>
             <ul className="list-group">
               { this.listUnavailablePlayers() }
             </ul>
           </section>
           <section>
-            <h1 style={{color: "#900C3F"}} className="justify-content-right" >My Team</h1>
+            <h3 style={{color: "#900C3F", borderBottom: "2px solid #900C3F"}}>My Team</h3>
             <ul className="list-group">
               { this.listMyTeam() }
             </ul>
