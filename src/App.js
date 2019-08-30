@@ -76,7 +76,7 @@ class App extends Component {
         </div> 
         <div class="d-flex justify-content-around">
           <section>
-            <h1 style={{color: "#900C3F"}}>Available Players</h1>
+            <h1 style={{color: "#900C3F"}}>Players</h1>
             <ul class="list-group">
               { this.listAvailablePlayers() }
             </ul>
