@@ -17,13 +17,13 @@ class App extends Component {
     return players.map(({player_name, overall_rank, positional_rank, bye_week}, index) => {
       return (
         <div key={ overall_rank }>
-          <li class="list-group-item">
+          <li className="list-group-item">
             <div>
               { overall_rank }. { player_name } - Pos. { positional_rank } - Bye: { bye_week } 
             </div>
-            <div class="btn-group justify-content-right" role="group" aria-label="Basic example">
-              <button class="btn btn-warning btn-sm d-flex justify-content-right" onClick={ () => this.selectPlayer(index) }>Picked</button> 
-              <button class="btn btn-danger btn-sm d-flex justify-content-right" onClick={ () => this.selectForTeam(index) }>Add to Team</button>   
+            <div className="btn-group justify-content-right" role="group" aria-label="Basic example">
+              <button className="btn btn-warning btn-sm d-flex justify-content-right" onClick={ () => this.selectPlayer(index) }>Picked</button> 
+              <button className="btn btn-danger btn-sm d-flex justify-content-right" onClick={ () => this.selectForTeam(index) }>Add to Team</button>   
             </div>
           </li>
        </div>
@@ -31,18 +31,23 @@ class App extends Component {
     })
   }
 
+ 
 
   selectPlayer = (index) => {
     const selected = this.state.pickedPlayers
     const players = this.state.players
 
     let player = players[index]
-    console.log('before', players[index])
+
     delete players[index]
+    
     selected.push(player)
     this.setState({pickedPlayers: selected})
     this.setState({players: players})
+    console.log(this.state.players)
   }
+
+  
 
   selectForTeam = (index) => {
     const team = this.state.myTeam
@@ -73,9 +78,9 @@ class App extends Component {
     return players.map(({player_name, overall_rank, positional_rank, bye_week}, index) => {
       return (
         <div key={ overall_rank }>
-          <li class="list-group-item list-group-item-danger">
+          <li className="list-group-item list-group-item-danger">
             { overall_rank }. { player_name } - Pos. { positional_rank } - Bye: { bye_week }
-            <button class="btn btn-warning btn-sm d-flex justify-content-right" onClick={ () => this.unselectPlayer(index) }>Un-Select</button>    
+            <button className="btn btn-warning btn-sm d-flex justify-content-right" onClick={ () => this.unselectPlayer(index) }>Remove</button>    
           </li>
        </div>
       )
@@ -99,9 +104,9 @@ class App extends Component {
     return players.map(({player_name, overall_rank, positional_rank, bye_week}, index) => {
       return (
         <div key={ overall_rank }>
-          <li class="list-group-item list-group-item-warning">
+          <li className="list-group-item list-group-item-warning">
             { overall_rank }. { player_name } - Pos. { positional_rank } - Bye: { bye_week }
-            <button class="btn btn-danger btn-sm d-flex justify-content-right" onClick={ () => this.unselectTeam(index) }>Un-Select</button>    
+            <button className="btn btn-danger btn-sm d-flex justify-content-right" onClick={ () => this.unselectTeam(index) }>Remove</button>    
           </li>
        </div>
       )
@@ -118,22 +123,22 @@ class App extends Component {
             <span id="logo" className="navbar-brand mb-0 h1" style={{color: "#FFC300"}}>S.D.I.F.F.L.</span>
           </nav> 
         </div> 
-        <div class="d-flex justify-content-around">
+        <div className="d-flex justify-content-around">
           <section>
             <h1 style={{color: "#900C3F"}}>Players</h1>
-            <ul class="list-group">
+            <ul className="list-group">
               { this.listAvailablePlayers() }
             </ul>
           </section>
           <section>
             <h1 style={{color: "#900C3F"}}>Picked</h1>
-            <ul class="list-group">
+            <ul className="list-group">
               { this.listUnavailablePlayers() }
             </ul>
           </section>
           <section>
             <h1 style={{color: "#900C3F"}}>My Team</h1>
-            <ul class="list-group">
+            <ul className="list-group">
               { this.listMyTeam() }
             </ul>
           </section>
