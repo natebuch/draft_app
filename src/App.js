@@ -7,7 +7,8 @@ class App extends Component {
     super(props);
     this.state = { 
       players: playerData,
-      pickedPlayers: [] 
+      pickedPlayers: [],
+      myTeam: [] 
      }
   }
 
@@ -16,9 +17,14 @@ class App extends Component {
     return players.map(({player_name, overall_rank, positional_rank, bye_week}, index) => {
       return (
         <div key={ overall_rank }>
-          <li class="list-group-item list-group-item-warning">
-            { overall_rank }. { player_name } - Pos. { positional_rank } - Bye: { bye_week }
-            <button class="btn btn-danger btn-sm d-flex justify-content-right" onClick={ () => this.selectPlayer(index) }>Select</button>    
+          <li class="list-group-item">
+            <div>
+              { overall_rank }. { player_name } - Pos. { positional_rank } - Bye: { bye_week } 
+            </div>
+            <div class="btn-group justify-content-right" role="group" aria-label="Basic example">
+              <button class="btn btn-warning btn-sm d-flex justify-content-right" onClick={ () => this.selectPlayer(index) }>Picked</button> 
+              <button class="btn btn-danger btn-sm d-flex justify-content-right" onClick={ () => this.selectForTeam(index) }>Add to Team</button>   
+            </div>
           </li>
        </div>
       )
@@ -37,7 +43,31 @@ class App extends Component {
     this.setState({pickedPlayers: selected})
     this.setState({players: players})
   }
+
+  selectForTeam = (index) => {
+    const team = this.state.myTeam
+    const players = this.state.players
+
+    let player = players[index]
+    console.log('before', players[index])
+    delete players[index]
+    team.push(player)
+    this.setState({myTeam: team})
+    this.setState({players: players})
+  }
   
+  unselectTeam = (index) => {
+    const team = this.state.myTeam
+    const players = this.state.players
+
+    let player = team[index]
+
+    delete team[index]
+    players.push(player)
+    this.setState({myTeam: team})
+    this.setState({players: players})
+  }
+
   listUnavailablePlayers = () => {
     const players = this.state.pickedPlayers
     return players.map(({player_name, overall_rank, positional_rank, bye_week}, index) => {
@@ -64,6 +94,20 @@ class App extends Component {
     this.setState({players: players})
   }
 
+  listMyTeam = () => {
+    const players = this.state.myTeam
+    return players.map(({player_name, overall_rank, positional_rank, bye_week}, index) => {
+      return (
+        <div key={ overall_rank }>
+          <li class="list-group-item list-group-item-warning">
+            { overall_rank }. { player_name } - Pos. { positional_rank } - Bye: { bye_week }
+            <button class="btn btn-danger btn-sm d-flex justify-content-right" onClick={ () => this.unselectTeam(index) }>Un-Select</button>    
+          </li>
+       </div>
+      )
+    })  
+  }
+
 
   render() { 
     return (
@@ -82,9 +126,15 @@ class App extends Component {
             </ul>
           </section>
           <section>
-            <h1 style={{color: "#900C3F"}}>My Team</h1>
+            <h1 style={{color: "#900C3F"}}>Picked</h1>
             <ul class="list-group">
               { this.listUnavailablePlayers() }
+            </ul>
+          </section>
+          <section>
+            <h1 style={{color: "#900C3F"}}>My Team</h1>
+            <ul class="list-group">
+              { this.listMyTeam() }
             </ul>
           </section>
         </div>
