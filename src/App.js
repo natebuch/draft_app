@@ -140,7 +140,7 @@ class App extends Component {
             </ul>
           </section>
           <section>
-            <h3 style={{color: "#900C3F", borderBottom: "2px solid #900C3F"}}>My Team</h3>
+            <h3 style={{color: "#900C3F", borderBottom: "2px solid #900C3F"}}>My Players</h3>
             <ul className="list-group">
               { this.listMyTeam() }
             </ul>
