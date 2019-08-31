@@ -123,9 +123,11 @@ class App extends Component {
           <nav className="navbar" style={{backgroundColor: '#900C3F'}}>
             <div>
               <img id="fork" src="https://i.redd.it/odmx4dqcaory.jpg" width="60" height="60" alt=""/>
-              <span style={{color: "#FFC300"}} className='justify-content-left'>DRAFT 'EM</span>
             </div>
-            <span id="logo" className="navbar-brand mb-0 h1" style={{color: "#FFC300"}}>S.D.I.F.F.L.</span>
+            <div>
+             <img id="skyline" src="https://i.imgur.com/XstvYWp.png" alt=""/>
+            </div>
+            <span id="logo" className="navbar-brand mb-0 h1" style={{borderColor: "#FFC300", color: "#FFC300"}}>S.D.I.F.F.L.</span>
           </nav> 
         </div> 
         <div className="d-flex justify-content-around">
