@@ -124,9 +124,7 @@ class App extends Component {
             <div>
               <img id="fork" src="https://i.redd.it/odmx4dqcaory.jpg" width="60" height="60" alt=""/>
             </div>
-            <div>
-             <img id="skyline" src="https://i.imgur.com/XstvYWp.png" alt=""/>
-            </div>
+            
             <span id="logo" className="navbar-brand mb-0 h1" style={{borderColor: "#FFC300", color: "#FFC300"}}>S.D.I.F.F.L.</span>
           </nav> 
         </div> 
